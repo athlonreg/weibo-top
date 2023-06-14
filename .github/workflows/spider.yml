@@ -1,0 +1,40 @@
+name: Weibo Top
+
+on:
+  schedule:
+    - cron: "0 */3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.10"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests urllib
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Run Spider
+      run: |
+        python weibo.py
+    - name: Commit files
+      run: |
+        git add .
+        git config --local user.email "15563836030@163.com"
+        git config --local user.name "athlonreg"
+        git commit -m "Update in $(date +%Y-%m-%d)"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
