@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install requests urllib
+        pip install requests urllib3
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run Spider
       run: |
