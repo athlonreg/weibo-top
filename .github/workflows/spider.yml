@@ -33,6 +33,7 @@ jobs:
         node-version: 18
     - name: Hexo
       run: |
+        npm i
         hexo clean
         hexo g
     - name: Commit files
