@@ -34,6 +34,8 @@ jobs:
     - name: Hexo
       run: |
         npm i
+        npm install hexo --save
+        npm install css --save
         hexo clean
         hexo g
     - name: Commit files
