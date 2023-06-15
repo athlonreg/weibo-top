@@ -27,6 +27,14 @@ jobs:
     - name: Run Spider
       run: |
         python weibo.py
+    - name: Set up NodeJS 18
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18
+    - name: Hexo
+      run: |
+        hexo clean
+        hexo g
     - name: Commit files
       run: |
         git add .
