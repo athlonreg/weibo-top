@@ -33,6 +33,7 @@ jobs:
         node-version: 18
     - name: Hexo
       run: |
+        set -ex
         npm i
         npm install hexo --save
         npm install css --save
