@@ -29,7 +29,7 @@ def spider():
         word = item.get("word")
         realpos = str(item.get("realpos"))
         category = item.get("category")
-        link = urllib.parse.quote("https://s.weibo.com/weibo?q=%23" + word + "%23", safe='://')
+        link = urllib.parse.quote_plus("https://s.weibo.com/weibo?q=%23" + word + "%23", safe='://?=%')
         word = '[' + item.get("word") + '](' + link + ')'
         if timestamp is None:
             continue
@@ -49,7 +49,7 @@ tags:
   - 每日热搜
   - 微博
   - 热搜
-index_img: https://cdn.jsdelivr.net/gh/athlonreg/weibo-top/weibo-top.jpeg
+index_img: https://fastly.jsdelivr.net/gh/athlonreg/weibo-top/weibo-top.jpeg
 excerpt: 每日热搜 - {now.strftime("%Y-%m-%d %H:%M:%S")}
 ---
 
